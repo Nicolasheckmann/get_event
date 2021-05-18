@@ -11,6 +11,11 @@
             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
           </div>
           <small class="text-muted"><%= @event.duration%> min</small>
+          <small class="text-muted"><%= @event.attendees.count%> participants</small>
+          <small class="text-muted"><%= @event.admin.email%></small>
+          <small class="text-muted"><%= @event.location%></small>
+          <small class="text-muted"><%= @event.price%>€</small>
+          <small class="text-muted">du <%= @event.start_date%> au <%= @event.end_date%></small>
         </div>
       </div>
     </div>

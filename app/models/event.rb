@@ -24,6 +24,10 @@ class Event < ApplicationRecord
   def is_multiple_of_5?
     errors.add(:duration, "La durée doit être multiple de 5") unless duration % 5 == 0
   end
+
+  def end_date
+    start_date + (duration*60)
+  end
   
   has_many :attendances
   has_many :attendees, through: :attendances, class_name: "User"
