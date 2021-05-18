@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <br><br><br>
+    <%= form_with(model: @event, local: true) do |f| %>
+      <h1 class="h3 mb-3 font-weight-normal text-center">Nouvel Événement</h1>
+
+      <div class="form-group">
+        <%= f.label :start_date, "Date de début" %><br />
+        <%= f.date_field :start_date, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :duration, "Durée(en minutes)" %><br />
+        <%= f.number_field :duration, step: 5, class: "form-control"%>
+      </div>
+
+        <div class="form-group">
+          <%= f.label :title, "Titre de l'événement" %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description, "Description de l'événement" %>
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :price, "Prix de l'événement" %>
+          <%= f.number_field :price, in: 1..1000, step: 1, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location, "Lieu de l'événement" %>
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+
+      <div class="actions mt-3">
+        <%= f.submit "Créer l'Événement", class: "btn btn-lg btn-primary btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>
