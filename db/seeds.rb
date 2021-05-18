@@ -8,7 +8,7 @@
 
 User.destroy_all
 10.times do |i|
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::TvShows::GameOfThrones.quote, email: Faker::Name.first_name+"@yopmail.com", encrypted_password: Faker::Crypto.sha1)
+  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::TvShows::GameOfThrones.quote, email: Faker::Name.first_name+"@yopmail.com", encrypted_password: Faker::Crypto.sha1, reset_password_token: Faker::Crypto.sha1)
   puts "#{i+1} users created"
 end
 
