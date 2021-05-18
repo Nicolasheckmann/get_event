@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     puts params
-    if @user.update(description: params[:user][:description], first_name: params[:user][:first_name], last_name: params[:user][:last_name] )
+    if @user.update(description: params[:description], first_name: params[:first_name], last_name: params[:last_name] )
       flash[:notice] = 'Profil modifié'
       redirect_to user_path(@user.id)
     else
