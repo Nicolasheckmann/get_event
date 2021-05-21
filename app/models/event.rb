@@ -13,7 +13,7 @@ class Event < ApplicationRecord
     length: { in: 20..1000, message: "Le titre doit faire entre 20 et 1000 charactères" }
   validates :price,
     presence: true,
-    numericality: { greater_than: 0, less_than: 1001, message: "Le prix doit être compris entre 1 et 1000"}
+    numericality: { greater_than_or_equal_to: 0, less_than: 1001, message: "Le prix doit être compris entre 1 et 1000"}
   validates :location,
     presence: true
 
@@ -29,6 +29,10 @@ class Event < ApplicationRecord
     start_date + (duration*60)
   end
   
+  def is_free?
+    return true if self.price == 0
+  end
+
   has_many :attendances
   has_many :attendees, through: :attendances, class_name: "User"
   belongs_to :admin, class_name: "User"

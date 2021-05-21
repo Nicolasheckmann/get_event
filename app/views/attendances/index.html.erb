@@ -1,0 +1,14 @@
+<h2>Liste des participants</h2>
+
+<% @attendances.each do |attendance|%>
+  <div>
+    <%= attendance.attendee.email%>
+  </div>
+<% end %>
+
+<% if @event.admin == current_user%>
+  <a type="button" class="btn btn-sm btn-outline-secondary" href="<%=  edit_event_path(@event.id) %>">Editer l'événement</a>
+<% end %>   
+<% if @event.admin == current_user%>
+  <%= link_to "Supprimer l'événement", event_path(@event), method: "delete", data: {confirm: "Est tu sûr de vouloir supprimer l'événement?"}, class: "btn btn-sm btn-outline-secondary"%>
+<% end %>   

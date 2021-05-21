@@ -11,13 +11,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(185, 214, 248);">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top p-0" style="background-color: rgb(185, 214, 248);">
       <div class="container-fluid d-flex">
         <a class="navbar-brand" href="<%= root_path %>">Get Events</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" style="max-width: 250px;" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" style="" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="<%= new_event_path %>">Créer un Événement</a>
           </div>
@@ -40,9 +40,14 @@
         </div>
       </div>
     </nav>
-    <div class="container mt-5">
-      <p class="notice pt-4"><%= notice %></p>
-      <p class="alert"><%= alert %></p> 
+    <div class="container mt-5 pt-5">
+
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-<%= type%> text-center" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
     <%# <footer class="text-muted">
