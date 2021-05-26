@@ -16,10 +16,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(title: params[:event][:title], description: params[:event][:description], start_date: params[:event][:start_date], duration: params[:event][:duration], price: params[:event][:price], location: params[:event][:location], admin: current_user)
     if @event.save
-      flash[:notice] = 'Nouvel événement créé'
+      flash[:success] = 'Nouvel événement créé'
       redirect_to event_path(@event.id)
     else
-      flash.now[:notice] = "Nous n'avons pas réussi à créer l'événement' pour la (ou les) raison(s) suivante(s) :"
+      flash.now[:error] = "Nous n'avons pas réussi à créer l'événement' pour la (ou les) raison(s) suivante(s) :"
       render 'new'
     end
   end
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Événement modifié'
       redirect_to event_path(@event.id)
     else
-      flash.now[:danger] = "Nous n'avons pas réussi à modifier l'événement' pour la (ou les) raison(s) suivante(s) :"
+      flash.now[:error] = "Nous n'avons pas réussi à modifier l'événement' pour la (ou les) raison(s) suivante(s) :"
       render :edit
     end
   end

@@ -1,0 +1,17 @@
+<div class="col-md-4">
+  <div class="card mb-4 box-shadow">
+    <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="<%= picture_url %>" data-holder-rendered="true">
+    <div class="card-body">
+      <p class="card-text font-weight-bold"><%= event.title %></p>
+      <p class="card-text"><%= event.description%></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <a type="button" class="btn btn-sm btn-outline-primary" href="<%= event_path(event.id) %>">Voir l'événement</a>
+        </div>
+        <a href="<%= user_path(event.admin.id)%>"><small class="text-muted"><%= event.admin.first_name %> <%= event.admin.last_name %></small></a>
+        <small class="text-muted"><%= event.duration %> min</small>
+        <small><%= event.price %> €</small>
+      </div>
+    </div>
+  </div>
+</div>

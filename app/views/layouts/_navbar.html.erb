@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light fixed-top p-0 bg-white border-bottom border-primary">
+  <div class="container-fluid d-flex">
+    <a class="navbar-brand" href="<%= root_path %>">Get Events</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" style="" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="<%= new_event_path %>">Créer un Événement</a>
+      </div>
+    </div>
+    <div class="">
+      <% if !user_signed_in? %>
+        <div class="dropdown show ml-auto p-2">
+          <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            S'inscrire / Se connecter
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="<%= new_user_registration_path %>">S'inscrire</a>
+            <a class="dropdown-item" href="<%= new_user_session_path %>">Se connecter</a>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "Mon profil", user_path(current_user), class: "ml-auto p-2"%>
+        <%= link_to "Se déconnecter", destroy_user_session_path, method: "delete", class: "ml-auto p-2"%>
+      <% end %>
+    </div>
+  </div>
+</nav>
+

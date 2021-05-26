@@ -18,7 +18,7 @@ class AttendancesController < ApplicationController
         flash[:success] = "Vous êtes enregistré pour l'événement gratuit"
         redirect_to event_path(@event.id)
       else
-        flash[:danger] = "Nous n'avons pas réussi à créer la nouvelle participation"
+        flash[:error] = "Nous n'avons pas réussi à créer la nouvelle participation"
         redirect_to new_event_attendance_path(@event.id)
       end 
     else
@@ -40,7 +40,7 @@ class AttendancesController < ApplicationController
           flash[:success] = "Vous avez bien payé #{@event.price}"
           redirect_to event_path(@event.id)
         else
-          flash[:danger] = "Nous n'avons pas réussi à créer la nouvelle participation"
+          flash[:error] = "Nous n'avons pas réussi à créer la nouvelle participation"
           redirect_to new_event_attendance_path(@event.id)
         end 
       end
